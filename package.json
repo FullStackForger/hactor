@@ -1,0 +1,28 @@
+{
+  "name": "Hactor",
+  "version": "1.0.0",
+  "description": "Hactor = Hapi Actor. Inheritance library",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innocentio/hactor"
+  },
+  "keywords": [
+    "javascript",
+    "inheritance",
+    "hapi",
+    "extend"
+  ],
+  "author": "Mark Bevels",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/innocentio/hactor/issues"
+  },
+  "homepage": "https://github.com/innocentio/hactor"
+}
