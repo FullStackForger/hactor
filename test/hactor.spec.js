@@ -109,12 +109,11 @@ describe("Custom Actor object", function () {
 
 
 	it('should provide constructor with access to locals', function (done) {
-		var constructorCalled = false,
-			MyActor, actor;
+		var MyActor, actor;
 		
 		MyActor = Actor.extend({
 			constructor: function (version) {
-				constructorCalled = true;
+				this.version = version;
 			},
 			getVersion: function () {
 				return this.version;					
@@ -127,4 +126,21 @@ describe("Custom Actor object", function () {
 		expect(actor.getVersion()).to.be.equal(1.2);
 		done();
 	});
+
+	it('should inherit prototype and constructor', function (done) {
+		var MyActor, actor;
+
+		MyActor = Actor.extend({
+			constructor: function (version) {
+				this.version = version;
+			},
+			getVersion: function () {
+				return this.version;
+			}
+		});
+		actor = new MyActor();
+
+	done();
+		//actor = new MyActor(1.2);
+	})
 });
