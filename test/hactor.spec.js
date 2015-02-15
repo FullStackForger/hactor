@@ -142,10 +142,6 @@ describe("Custom Actor object", function () {
 		Child = Parent.extend({
 			constructor: function (version) {
 				this._super(version);
-			},
-			getVersion: function () {
-				return this._super()
-				
 			}
 		});
 
@@ -154,6 +150,34 @@ describe("Custom Actor object", function () {
 		expect(object.version).to.be.equal(1);
 		expect(object.getVersion()).to.be.equal(1);
 		done();
+	});
+	
+	it('should correctly iterate through own properties', function (done) {
+		var arcCounter = 0,
+			Class, object, i, numArguments;
+
+		Class = Actor.extend({
+			constructor: function () {
+				numArguments = arguments.length;
+				for (i = 0; i < arguments.length; i++) {
+					this['arg' + i] = arguments[i];
+				}
+			},
+			version: '0.0.1rc123'
+		});
 		
-	})
+		object = new Class(0, 100, 'x2x','test string');
+
+		expect(object['arg0']).to.be.equal(0);
+		expect(object['arg1']).to.be.equal(100);
+		expect(object['arg2']).to.be.equal('x2x');
+		expect(object['arg3']).to.be.equal('test string');
+		expect(object.version).to.be.equal('0.0.1rc123');
+
+		for (var name in object) if (object.hasOwnProperty(name)) arcCounter++;
+		expect(arcCounter).to.be.equal(numArguments);
+		
+		done();
+	});
+		
 });
