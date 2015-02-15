@@ -127,10 +127,10 @@ describe("Custom Actor object", function () {
 		done();
 	});
 
-	it('should inherit prototype and constructor', function (done) {
-		var MyActor, actor;
+	it('should allow to call parent properties', function (done) {
+		var Parent, Child, object;
 
-		MyActor = Actor.extend({
+		Parent  = Actor.extend({
 			constructor: function (version) {
 				this.version = version;
 			},
@@ -138,9 +138,22 @@ describe("Custom Actor object", function () {
 				return this.version;
 			}
 		});
-		actor = new MyActor();
 
-	done();
-		//actor = new MyActor(1.2);
+		Child = Parent.extend({
+			constructor: function (version) {
+				this._super(version);
+			},
+			getVersion: function () {
+				return this._super()
+				
+			}
+		});
+
+		object = new Child(1, "information");
+
+		expect(object.version).to.be.equal(1);
+		expect(object.getVersion()).to.be.equal(1);
+		done();
+		
 	})
 });
