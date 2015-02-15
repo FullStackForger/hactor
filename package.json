@@ -1,5 +1,5 @@
 {
-  "name": "Hactor",
+  "name": "hactor",
   "version": "1.0.0",
   "description": "Hactor = Hapi Actor. Inheritance library",
   "main": "index.js",
