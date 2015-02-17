@@ -90,6 +90,23 @@ describe("New custom Actor class object", function () {
 		expect(NewActor.testMe2()).to.equal(2);
 		done();
 	});
+
+
+	it('should extend Actor with static methods but not prototype', function (done) {
+		var ObjConstructor = function () { 
+				this.testMe1 = function () { return 1; } 
+			},
+			NewActor,
+			object;
+
+		ObjConstructor.prototype.testMe2 = function () { return 2; };
+		
+		object = new ObjConstructor();
+		NewActor = Actor.extend(null, object);
+		expect(NewActor.testMe1()).to.equal(1);
+		expect(NewActor.testMe2).to.be.undefined;
+		done();
+	});
 });
 
 describe("Custom Actor object", function () {
@@ -174,10 +191,13 @@ describe("Custom Actor object", function () {
 		expect(object['arg3']).to.be.equal('test string');
 		expect(object.version).to.be.equal('0.0.1rc123');
 
-		for (var name in object) if (object.hasOwnProperty(name)) arcCounter++;
+		for (var name in object) {
+			if (object.hasOwnProperty(name)) {
+				arcCounter++;
+			}
+		}
 		expect(arcCounter).to.be.equal(numArguments);
 		
 		done();
 	});
-		
 });
