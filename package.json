@@ -1,6 +1,6 @@
 {
   "name": "hactor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hactor = Hapi Actor. Inheritance library",
   "main": "index.js",
   "directories": {
