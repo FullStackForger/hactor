@@ -1,6 +1,6 @@
 # hactor
 
-[![Build Status](https://api.travis-ci.org/innocentio/hactor.png)](https://travis-ci.org/innocentio/hactor)
+[![Build Status](https://travis-ci.org/indieforger/hactor.svg?branch=master)
 
 
 ## Usage
